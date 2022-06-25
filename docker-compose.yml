@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        UID: ${UID}
+    volumes:
+      - .:/go/src/
+    command: tail -f /dev/null
+    image: simulator
+    container_name: simulator
+    ports:
+      - 8081:8081
+    extra_hosts:
+      - "host.docker.interal:172.17.8.1"
